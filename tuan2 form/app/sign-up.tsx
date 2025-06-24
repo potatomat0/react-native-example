@@ -1,4 +1,3 @@
-// app/sign-up.tsx
 import React from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, SafeAreaView } from 'react-native';
 
@@ -45,7 +44,6 @@ export default function SignUpScreen() {
   );
 }
 
-// Styles are the same
 const styles = StyleSheet.create({
  	contentWrapper: {
 		width: '85%',

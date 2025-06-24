@@ -1,4 +1,4 @@
-// app/index.tsx
+
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, SafeAreaView } from 'react-native';
 import { Link } from 'expo-router';
@@ -15,7 +15,7 @@ export default function WelcomeScreen() {
       </View>
 
       <View style={styles.buttonsContainer}>
-        {/* Use the Link component for navigation */}
+        {/* sử dụng Link component  */}
         <Link href="/login" asChild>
           <TouchableOpacity style={styles.loginButton}>
             <Text style={styles.loginButtonText}>Log In</Text>
@@ -31,7 +31,6 @@ export default function WelcomeScreen() {
   );
 }
 
-// All the styles are the same as before.
 const styles = StyleSheet.create({
   container: {
     flex: 1,

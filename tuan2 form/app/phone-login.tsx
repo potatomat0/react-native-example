@@ -1,10 +1,6 @@
-// app/phone-login.tsx
 import React from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, SafeAreaView } from 'react-native';
 import { Link } from 'expo-router';
-
-
-
 
 export default function PhoneLoginScreen() {
 	return (
@@ -51,7 +47,6 @@ export default function PhoneLoginScreen() {
 	);
 }
 
-// Styles are the same
 const styles = StyleSheet.create({
 	contentWrapper: {
 		width: '85%',

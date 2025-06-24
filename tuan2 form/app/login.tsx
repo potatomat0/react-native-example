@@ -1,4 +1,3 @@
-// app/login.tsx
 import React from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, SafeAreaView } from 'react-native';
 import { Link } from 'expo-router';
