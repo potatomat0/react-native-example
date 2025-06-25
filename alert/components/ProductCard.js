@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   },
 });
 
-// simple product without reading product.js and FlatList
+// simple product without reading product.js and FlatList, 
 
 // import { StyleSheet, Text, View, Image } from "react-native";
 // import React from "react";

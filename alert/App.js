@@ -235,3 +235,176 @@ export default App;
 // 		})
 
 // 		export default App;
+
+
+// alert example 
+
+
+// import React, { useState } from 'react';
+// import {
+//   Alert,
+//   Modal,
+//   Button,
+//   View,
+//   Text,
+//   SafeAreaView,
+//   StyleSheet,
+// } from 'react-native';
+
+// import ProductCard from './components/ProductCard';
+
+// const App = () => {
+//   const [showModal, setShowModal] = useState(false);
+
+//   // Simple Alert
+//   const showSimpleAlert = () => {
+//     Alert.alert("Simple Alert", "This is a basic alert message!");
+//   };
+
+//   // Alert with OK button
+//   const showAlertWithOK = () => {
+//     Alert.alert(
+//       "Alert Title",
+//       "This alert has an OK button",
+//       [
+//         { text: "OK", onPress: () => console.log("OK Pressed") }
+//       ]
+//     );
+//   };
+
+//   // Alert with Cancel and OK buttons
+//   const showConfirmAlert = () => {
+//     Alert.alert(
+//       "Confirm Purchase",
+//       "Are you sure you want to buy iPhone 16 Pro Max for $1199?",
+//       [
+//         {
+//           text: "Cancel",
+//           onPress: () => console.log("Cancel Pressed"),
+//           style: "cancel"
+//         },
+//         {
+//           text: "OK",
+//           onPress: () => console.log("Purchase Confirmed!")
+//         }
+//       ]
+//     );
+//   };
+
+//   // Alert with 3 buttons
+//   const showThreeButtonAlert = () => {
+//     Alert.alert(
+//       "Choose Action",
+//       "What would you like to do?",
+//       [
+//         {
+//           text: "Cancel",
+//           onPress: () => console.log("Cancel Pressed"),
+//           style: "cancel"
+//         },
+//         {
+//           text: "View Details",
+//           onPress: () => setShowModal(true)
+//         },
+//         {
+//           text: "Buy Now",
+//           onPress: () => console.log("Buy Now Pressed!")
+//         }
+//       ]
+//     );
+//   };
+
+//   return (
+//     <SafeAreaView style={{ flex: 1 }}>
+//       <View style={styles.container}>
+//         <Modal
+//           animationType={'slide'}
+//           transparent={false}
+//           visible={showModal}
+//         >
+//           <View style={styles.modal}>
+//             <View style={styles.contentWrapper}>
+//               <ProductCard />
+//             </View>
+//             <Button 
+//               title="Close" 
+//               onPress={() => { setShowModal(!showModal) }}
+//             />
+//           </View>
+//         </Modal>
+
+//         <Text style={styles.title}>Alert API Examples</Text>
+
+//         <Button 
+//           title="Simple Alert" 
+//           onPress={showSimpleAlert}
+//           color="#007AFF"
+//         />
+
+//         <View style={styles.buttonSpacing} />
+
+//         <Button 
+//           title="Alert with OK Button" 
+//           onPress={showAlertWithOK}
+//           color="#34C759"
+//         />
+
+//         <View style={styles.buttonSpacing} />
+
+//         <Button 
+//           title="Confirm Alert (Cancel/OK)" 
+//           onPress={showConfirmAlert}
+//           color="#FF9500"
+//         />
+
+//         <View style={styles.buttonSpacing} />
+
+//         <Button 
+//           title="Three Button Alert" 
+//           onPress={showThreeButtonAlert}
+//           color="#FF3B30"
+//         />
+
+//         <View style={styles.buttonSpacing} />
+
+//         <Button 
+//           title="Show Product Modal" 
+//           onPress={() => { setShowModal(!showModal) }}
+//           color="#5856D6"
+//         />
+//       </View>
+//     </SafeAreaView>
+//   );
+// };
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//     backgroundColor: '#fff',
+//     padding: 20,
+//   },
+//   title: {
+//     fontSize: 24,
+//     fontWeight: 'bold',
+//     marginBottom: 30,
+//     color: '#333',
+//   },
+//   contentWrapper: {
+//     width: '85%',
+//     alignSelf: 'center',
+//   },
+//   modal: {
+//     flex: 1,
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//     backgroundColor: '#f0f0f0',
+//     padding: 20,
+//   },
+//   buttonSpacing: {
+//     height: 15,
+//   },
+// });
+
+// export default App;
