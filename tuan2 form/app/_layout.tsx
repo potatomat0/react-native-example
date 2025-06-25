@@ -30,7 +30,6 @@ export default function RootLayout() {
         <Stack.Screen name="phone-login" options={{ headerTitle: '' }} />
         <Stack.Screen name="sign-up" options={{ headerTitle: '' }} />
         
-        {/* You can keep this for handling 404 errors, it's good practice */}
         {/* <Stack.Screen name="+not-found" /> */}
       </Stack>
     </>
