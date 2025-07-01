@@ -29,7 +29,7 @@ export default function App() {
           options={{
             title: 'Product Browse',
             headerStyle: {
-              backgroundColor: '#121212',
+              backgroundColor: '#FFF',
             },
           }}
         /> 
@@ -41,7 +41,7 @@ export default function App() {
           options={{
             title: 'Sign Up',
             headerStyle: {
-              backgroundColor: '#121212',
+              backgroundColor: '#FFF',
             }
           }}
         /> 

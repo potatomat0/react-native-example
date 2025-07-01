@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
   },
   input: {
     backgroundColor: '#FFB4B4',
-    color: '##0D62FF',
+    color: '#0D62FF',
     paddingHorizontal: 15,
     paddingVertical: 15,
     borderRadius: 10,

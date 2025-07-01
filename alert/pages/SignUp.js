@@ -29,13 +29,12 @@ export default function SignUpScreen({navigation}) {
         <Text style={styles.sendCodeButtonText}>Send code</Text>
       </TouchableOpacity>
 
-      <Text style={styles.orText}>OR</Text>
-
-      <Button
-        title="Already has an account? Go to Login"
-        style={styles.linkText}
-        onPress={() => navigation.navigate('Login')}
-      />
+      <TouchableOpacity
+            style={styles.sendCodeButton}
+            onPress={() => navigation.navigate('Login')}
+          >
+            <Text style={styles.sendCodeButtonText}>Go to Login</Text>
+          </TouchableOpacity>
 
       <Text style={styles.termsText}>
         By creating an account you agree with our terms.
@@ -58,7 +57,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 28,
     fontWeight: 'bold',
-    color: '#A020F0',
+    color: '#0D62FF',
     marginBottom: 20,
   },
   profilePicContainer: {
@@ -79,7 +78,7 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   input: {
-    backgroundColor: '#FEFBC7',
+    backgroundColor: '#FFB4B4',
     color: '#FFFFFF',
     paddingHorizontal: 15,
     paddingVertical: 15,
@@ -92,7 +91,7 @@ const styles = StyleSheet.create({
   phoneInputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#FEFBC7',
+    backgroundColor: '#FFB4B4',
     borderRadius: 10,
     borderWidth: 1,
     borderColor: '#333',
@@ -111,7 +110,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   sendCodeButton: {
-    backgroundColor: '#6A0DAD',
+    backgroundColor: '#0D62FF',
     paddingVertical: 15,
     borderRadius: 25,
     alignItems: 'center',
@@ -121,11 +120,6 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 18,
     fontWeight: 'bold',
-  },
-  orText: {
-    color: '#B0B0B0',
-    textAlign: 'center',
-    marginBottom: 20,
   },
   linkText: {
     color: '#007AFF',
