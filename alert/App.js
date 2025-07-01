@@ -23,16 +23,18 @@ export default function App() {
         /> 
 
         {/* Products screen */}
-        <Stack.Screen
-          name="Products"
-          component={Products}
-          options={{
-            title: 'Product Browse',
-            headerStyle: {
-              backgroundColor: '#FFF',
-            },
-          }}
-        /> 
+            <Stack.Screen
+        name="Products"
+        component={Products}
+        options={{
+          // headerStyle: {
+          //   backgroundColor: '#000', 
+          //   height: 200,
+          // },
+          headerShown: false,
+          // headerTintColor: '#fff', 
+  }}
+/>
 
         {/* Sign Up screen */}
         <Stack.Screen

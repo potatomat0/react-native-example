@@ -7,10 +7,17 @@ import Products from './Products';
 import Cart from './Cart';
 import Profile from './Profile';
 
+// import header component 
+
+import CustomHeader from '../components/header'
+
 const Tab = createBottomTabNavigator();
+
 
 const ProductPage = () => {
   return (
+    <>
+    <CustomHeader> </CustomHeader>
     <Tab.Navigator
       screenOptions={({ route }) => ({
         // out line the icon if the tab is focused
@@ -36,6 +43,7 @@ const ProductPage = () => {
       <Tab.Screen name="Cart" component={Cart} />
       <Tab.Screen name="Profile" component={Profile} />
     </Tab.Navigator>
+    </>
   );
 };
 
