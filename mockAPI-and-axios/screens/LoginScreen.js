@@ -1,15 +1,18 @@
 
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity , Image, Button, StyleSheet, Alert } from 'react-native';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
+import { loginSuccess } from '../redux/actions';
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
 
   const handleLogin = async () => {
     if (!email || !password) {
-      Alert.alert('Error', 'Please enter both email and password.');
+      Alert.alert('Lỗi', 'Vui lòng nhập cả email và mật khẩu.');
       return;
     }
 
@@ -18,13 +21,14 @@ const LoginScreen = ({ navigation }) => {
       const user = response.data.find(u => u.email === email && u.password === password);
 
       if (user) {
+        dispatch(loginSuccess(user));
         navigation.replace('BookManage');
       } else {
-        Alert.alert('Error', 'Invalid email or password.');
+        Alert.alert('Lỗi', 'Email hoặc mật khẩu không hợp lệ.');
       }
     } catch (error) {
       console.error(error);
-      Alert.alert('Error', 'An error occurred while logging in.');
+      Alert.alert('Lỗi', 'Đã xảy ra lỗi khi đăng nhập.');
     }
   };
 
@@ -41,18 +45,18 @@ const LoginScreen = ({ navigation }) => {
       />
       <TextInput
         style={styles.input}
-        placeholder="Password"
+        placeholder="Mật khẩu"
         value={password}
         onChangeText={setPassword}
         secureTextEntry        style={styles.input}
 
       />
       <TouchableOpacity onPress={handleLogin} style={styles.button} >
-        <Text> Login </Text>
+        <Text> Đăng nhập </Text>
       </TouchableOpacity>
       <View style={styles.signUpContainer}>
-        <Text>Don't have an account?</Text>
-        <Button title="Sign Up" onPress={() => navigation.navigate('SignUp')} style={styles.button} />
+        <Text>Chưa có tài khoản?</Text>
+        <Button title="Đăng ký" onPress={() => navigation.navigate('SignUp')} style={styles.button} />
       </View>
     </View>
   );

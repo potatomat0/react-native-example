@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import {
   View,
@@ -10,7 +9,9 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native'; // Import useNavigation
-
+// ...
+import { useSelector } from 'react-redux';
+//...
 // Import components và hooks
 import BookList from '../components/book_list';
 import BookModal from '../components/book_modal';
@@ -23,7 +24,8 @@ const API_URL = 'https://6874f531dd06792b9c960afa.mockapi.io/books';
 
 
 export default function BookManagementScreen() {
-  const navigation = useNavigation(); // Initialize navigation
+  const navigation = useNavigation(); 
+  const user = useSelector((state) => state.user);
 
   const [modalVisible, setModalVisible] = useState(false);
   const [editingBook, setEditingBook] = useState(null);
@@ -58,9 +60,8 @@ export default function BookManagementScreen() {
 
   // Xử lý đăng xuất
   const handleLogout = () => {
-    // Implement your logout logic here, e.g., clear user session, tokens, etc.
     console.log('User logged out');
-    navigation.replace('Login'); // Navigate back to LoginScreen
+    navigation.replace('Login'); 
   };
 
   return (
@@ -69,6 +70,7 @@ export default function BookManagementScreen() {
       
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Sách</Text>
+        {user && <Text style={styles.loggedUser}>Bạn đã đăng nhập bằng tài khoản{user.email}</Text>}
       </View>
     
       <BookList
@@ -89,7 +91,7 @@ export default function BookManagementScreen() {
           style={styles.logoutButton} // New style for logout button
           onPress={handleLogout}
         >
-          <Text style={styles.logoutButtonText}>Logout</Text>
+          <Text style={styles.logoutButtonText}>Đăng xuất</Text>
         </TouchableOpacity>
       </View>
 
@@ -113,29 +115,20 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff', 
   },
   header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: 16,
     paddingVertical: 12,
     backgroundColor: '#fff',
     borderBottomWidth: 2,
-    borderColor: '#000', 
+    borderColor: '#000',
+    alignItems: 'center',
   },
   headerTitle: {
     fontSize: 22,
     fontWeight: 'bold',
     color: '#000',
-    flex: 1,
-    textAlign: 'center',
-  },
-  headerTime: {
-    fontSize: 16,
-    color: '#000',
   },
   bottomContainer: {
-    flexDirection: 'row', // Arrange items horizontally
-    justifyContent: 'space-around', // Evenly spread items
+    flexDirection: 'row', 
+    justifyContent: 'space-around', 
     alignItems: 'center',
     paddingVertical: 20,
     backgroundColor: '#fff',
@@ -174,5 +167,10 @@ const styles = StyleSheet.create({
     color: '#000',
     fontWeight: 'bold',
     fontSize: 16,
+    textAlign: 'center'
   },
+	loggedUser: {
+		fontSize: 11,
+		color: 'grey'
+	}
 });

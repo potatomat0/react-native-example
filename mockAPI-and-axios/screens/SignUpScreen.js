@@ -8,19 +8,34 @@ const SignUpScreen = ({ navigation }) => {
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
 
+
+  const validateEmail = (email) => {
+  return String(email)
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+};
+
+
   const handleSignUp = async () => {
     if (!email || !password || !username) {
-      Alert.alert('Error', 'Please fill in all fields.');
+      Alert.alert('Lỗi', 'Vui lòng điền vào tất cả các trường.');
       return;
     }
 
     if (password.length < 6) {
-      Alert.alert('Error', 'Password must be at least 6 characters long.');
+      Alert.alert('Lỗi', 'Mật khẩu phải dài ít nhất 6 ký tự.');
       return;
     }
 
     if (username.length < 3) {
-        Alert.alert('Error', 'Username must be at least 3 characters long.');
+        Alert.alert('Lỗi', 'Tên người dùng phải dài ít nhất 3 ký tự.');
+        return;
+    }
+
+    if(!validateEmail(email)) {
+      Alert.alert('Email không hợp lệ');
         return;
     }
 
@@ -30,11 +45,11 @@ const SignUpScreen = ({ navigation }) => {
         password,
         username,
       });
-      Alert.alert('Success', 'Account created successfully!');
+      Alert.alert('Thành công', 'Tài khoản được tạo thành công!');
       navigation.goBack();
     } catch (error) {
       console.error(error);
-      Alert.alert('Error', 'An error occurred while signing up.');
+      Alert.alert('Lỗi', 'Đã xảy ra lỗi khi đăng ký.');
     }
   };
 
@@ -44,7 +59,7 @@ const SignUpScreen = ({ navigation }) => {
 
       <TextInput
         style={styles.input}
-        placeholder="Username"
+        placeholder="Tên người dùng"
         value={username}
         onChangeText={setUsername}
         autoCapitalize="none"
@@ -59,13 +74,13 @@ const SignUpScreen = ({ navigation }) => {
       />
       <TextInput
         style={styles.input}
-        placeholder="Password"
+        placeholder="Mật khẩu"
         value={password}
         onChangeText={setPassword}
         secureTextEntry
       />
         <TouchableOpacity onPress={handleSignUp} style={styles.button} >
-        <Text>SignUp </Text>
+        <Text>Đăng ký </Text>
       </TouchableOpacity>
     </View>
   );
