@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
+import { View, Text, TextInput, Image , TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import axios from 'axios';
 
 const SignUpScreen = ({ navigation }) => {
@@ -40,7 +40,8 @@ const SignUpScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Sign Up</Text>
+      <Image source={require('../assets/bookstore.png')} style={styles.logo} />
+
       <TextInput
         style={styles.input}
         placeholder="Username"
@@ -63,7 +64,9 @@ const SignUpScreen = ({ navigation }) => {
         onChangeText={setPassword}
         secureTextEntry
       />
-      <Button title="Sign Up" onPress={handleSignUp} />
+        <TouchableOpacity onPress={handleSignUp} style={styles.button} >
+        <Text>SignUp </Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -74,17 +77,37 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 16,
   },
-  title: {
-    fontSize: 24,
-    marginBottom: 16,
-    textAlign: 'center',
-  },
   input: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    marginBottom: 12,
-    paddingLeft: 8,
+    borderWidth: 2,
+    backgroundColor: "white",
+    borderColor: '#000',
+    padding: 16,
+    marginBottom: 16,
+    shadowColor: '#000',
+    shadowOffset: { width: 4, height: 4 },
+    shadowOpacity: 1,
+    shadowRadius: 0,
+  },
+   button: {
+    backgroundColor: '#4D96FF',
+    borderWidth: 2,
+    borderColor: '#000',
+    padding: 16,
+    marginTop: 10,
+    maxWidth: '25%',
+    alignSelf: 'center',
+    marginBottom: 16,
+    shadowColor: '#000',
+    shadowOffset: { width: 4, height: 4 },
+    shadowOpacity: 1,
+    shadowRadius: 0,
+  },
+     logo: {
+    width: 150, // Reduced from 300
+    height: 150, // Reduced from 300
+    resizeMode: 'contain',
+    marginBottom: 10, // Reduced margin
+    alignSelf: 'center'
   },
 });
 

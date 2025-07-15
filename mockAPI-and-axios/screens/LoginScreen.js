@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity , Image, Button, StyleSheet, Alert } from 'react-native';
 import axios from 'axios';
 
 const LoginScreen = ({ navigation }) => {
@@ -30,7 +30,7 @@ const LoginScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
+      <Image source={require('../assets/bookstore.png')} style={styles.logo} />
       <TextInput
         style={styles.input}
         placeholder="Email"
@@ -44,12 +44,15 @@ const LoginScreen = ({ navigation }) => {
         placeholder="Password"
         value={password}
         onChangeText={setPassword}
-        secureTextEntry
+        secureTextEntry        style={styles.input}
+
       />
-      <Button title="Login" onPress={handleLogin} />
+      <TouchableOpacity onPress={handleLogin} style={styles.button} >
+        <Text> Login </Text>
+      </TouchableOpacity>
       <View style={styles.signUpContainer}>
         <Text>Don't have an account?</Text>
-        <Button title="Sign Up" onPress={() => navigation.navigate('SignUp')} />
+        <Button title="Sign Up" onPress={() => navigation.navigate('SignUp')} style={styles.button} />
       </View>
     </View>
   );
@@ -61,23 +64,47 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 16,
   },
-  title: {
-    fontSize: 24,
-    marginBottom: 16,
-    textAlign: 'center',
-  },
   input: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    marginBottom: 12,
-    paddingLeft: 8,
+    // height: 40,
+    // borderColor: 'gray',
+    // borderWidth: 1,
+    // marginBottom: 12,
+    // paddingLeft: 8,
+    borderWidth: 2,
+    backgroundColor: "white",
+    borderColor: '#000',
+    padding: 16,
+    marginBottom: 16,
+    shadowColor: '#000',
+    shadowOffset: { width: 4, height: 4 },
+    shadowOpacity: 1,
+    shadowRadius: 0,
   },
   signUpContainer: {
     marginTop: 16,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+   logo: {
+    width: 150, // Reduced from 300
+    height: 150, // Reduced from 300
+    resizeMode: 'contain',
+    marginBottom: 10, // Reduced margin
+    alignSelf: 'center'
+  },
+  button: {
+    backgroundColor: '#4D96FF',
+    borderWidth: 2,
+    borderColor: '#000',
+    padding: 16,
+    maxWidth: '25%',
+    alignSelf: 'center',
+    marginBottom: 16,
+    shadowColor: '#000',
+    shadowOffset: { width: 4, height: 4 },
+    shadowOpacity: 1,
+    shadowRadius: 0,
   },
 });
 
