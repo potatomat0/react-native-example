@@ -1,0 +1,7 @@
+- You are inside a react-native application folder, scaffold and runtime is managed by npx expo.
+- Your job is to build an app with the exact functionality and UI similar to the code written inside ./web-sample. the web code samples uses GEMINI API to analyze user's personality. however, we need to use a utilized tflite file to calculate the personality to a 5-dimension spider graph. also, we need to use a different type of question list, as it is shown in ./questionList.csv.
+- Make sure that the code is scalable with firebase and google cloud, as we will do a "register/login" functionality right after. 
+- read the prototype file inside ./documents/ to understand functional and technical requirements 
+- the react-native code is similar to the /react-native-sample/ folder 
+- you are allowed to run system command. but don't build the sandbox by yourself. i'll run the app by myself and check it on expo go.  
+- for further technical requirements, there is a pdf of a research notebook on the personality vectorization for user matching, as it is provided at: 
