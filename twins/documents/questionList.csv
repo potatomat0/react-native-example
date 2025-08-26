@@ -1,0 +1,51 @@
+Question_Number,Question_Text,Scale,Direction,Scale_Name
+1,"Am the life of the party.",1,+,Extraversion
+2,"Feel little concern for others.",2,-,Agreeableness
+3,"Am always prepared.",3,+,Conscientiousness
+4,"Get stressed out easily.",4,-,Emotional Stability
+5,"Have a rich vocabulary.",5,+,Intellect/Imagination
+6,"Don't talk a lot.",1,-,Extraversion
+7,"Am interested in people.",2,+,Agreeableness
+8,"Leave my belongings around.",3,-,Conscientiousness
+9,"Am relaxed most of the time.",4,+,Emotional Stability
+10,"Have difficulty understanding abstract ideas.",5,-,Intellect/Imagination
+11,"Feel comfortable around people.",1,+,Extraversion
+12,"Insult people.",2,-,Agreeableness
+13,"Pay attention to details.",3,+,Conscientiousness
+14,"Worry about things.",4,-,Emotional Stability
+15,"Have a vivid imagination.",5,+,Intellect/Imagination
+16,"Keep in the background.",1,-,Extraversion
+17,"Sympathize with others' feelings.",2,+,Agreeableness
+18,"Make a mess of things.",3,-,Conscientiousness
+19,"Seldom feel blue.",4,+,Emotional Stability
+20,"Am not interested in abstract ideas.",5,-,Intellect/Imagination
+21,"Start conversations.",1,+,Extraversion
+22,"Am not interested in other people's problems.",2,-,Agreeableness
+23,"Get chores done right away.",3,+,Conscientiousness
+24,"Am easily disturbed.",4,-,Emotional Stability
+25,"Have excellent ideas.",5,+,Intellect/Imagination
+26,"Have little to say.",1,-,Extraversion
+27,"Have a soft heart.",2,+,Agreeableness
+28,"Often forget to put things back in their proper place.",3,-,Conscientiousness
+29,"Get upset easily.",4,-,Emotional Stability
+30,"Do not have a good imagination.",5,-,Intellect/Imagination
+31,"Talk to a lot of different people at parties.",1,+,Extraversion
+32,"Am not really interested in others.",2,-,Agreeableness
+33,"Like order.",3,+,Conscientiousness
+34,"Change my mood a lot.",4,-,Emotional Stability
+35,"Am quick to understand things.",5,+,Intellect/Imagination
+36,"Don't like to draw attention to myself.",1,-,Extraversion
+37,"Take time out for others.",2,+,Agreeableness
+38,"Shirk my duties.",3,-,Conscientiousness
+39,"Have frequent mood swings.",4,-,Emotional Stability
+40,"Use difficult words.",5,+,Intellect/Imagination
+41,"Don't mind being the center of attention.",1,+,Extraversion
+42,"Feel others' emotions.",2,+,Agreeableness
+43,"Follow a schedule.",3,+,Conscientiousness
+44,"Get irritated easily.",4,-,Emotional Stability
+45,"Spend time reflecting on things.",5,+,Intellect/Imagination
+46,"Am quiet around strangers.",1,-,Extraversion
+47,"Make people feel at ease.",2,+,Agreeableness
+48,"Am exacting in my work.",3,+,Conscientiousness
+49,"Often feel blue.",4,-,Emotional Stability
+50,"Am full of ideas.",5,+,Intellect/Imagination
