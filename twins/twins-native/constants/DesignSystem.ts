@@ -13,9 +13,9 @@ export const DesignSystem = {
     danger: '#E53E3E',
   },
   typography: {
-    fontFamily:
+    fontFamilyBase:
       'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif',
-    monospace: 'Roboto Mono, Fira Code, monospace',
+    fontFamilyMono: 'Roboto Mono, Fira Code, monospace',
     fontSizeXs: 12,
     fontSizeSm: 14,
     fontSizeMd: 16,
