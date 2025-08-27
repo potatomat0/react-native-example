@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { useRouter } from 'expo-router';
 import { User } from '../types';
 
-interface RegistrationScreenProps {
-  onRegister: (user: User) => void;
-}
-
-const RegistrationScreen: React.FC<RegistrationScreenProps> = ({ onRegister }) => {
+const RegistrationScreen: React.FC = () => {
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
   const [ageRange, setAgeRange] = useState('');
   const [gender, setGender] = useState('');
+  const router = useRouter();
 
   const handleRegister = () => {
     if (nickname && email && ageRange && gender) {
-      onRegister({ nickname, email, ageRange, gender });
+      const user: User = { nickname, email, ageRange, gender };
+      router.push({ pathname: '/questionnaire', params: { user: JSON.stringify(user) } });
     }
   };
 
