@@ -1,0 +1,50 @@
+export const DesignSystem = {
+  colors: {
+    primary: '#2B6CB0',
+    primaryHover: '#2C5282',
+    secondary: '#4A5568',
+    bg: '#FFFFFF',
+    surface: '#F7FAFC',
+    border: '#E2E8F0',
+    text: '#1A202C',
+    textMuted: '#718096',
+    success: '#38A169',
+    warning: '#D69E2E',
+    danger: '#E53E3E',
+  },
+  typography: {
+    fontFamily:
+      'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif',
+    monospace: 'Roboto Mono, Fira Code, monospace',
+    fontSizeXs: 12,
+    fontSizeSm: 14,
+    fontSizeMd: 16,
+    fontSizeLg: 20,
+    fontSizeXl: 24,
+    lineHeightBase: 1.5,
+  },
+  spacing: {
+    1: 4,
+    2: 8,
+    3: 12,
+    4: 16,
+    5: 20,
+    6: 24,
+  },
+  radius: {
+    sm: 4,
+    md: 8,
+    lg: 16,
+  },
+  shadows: {
+    light: '0 1px 3px rgba(0, 0, 0, 0.1)',
+    medium: '0 4px 6px rgba(0, 0, 0, 0.1)',
+    heavy: '0 10px 15px rgba(0, 0, 0, 0.2)',
+  },
+  breakpoints: {
+    sm: 640,
+    md: 768,
+    lg: 1024,
+    xl: 1280,
+  },
+} as const;

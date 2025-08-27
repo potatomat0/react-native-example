@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { Button, StyleSheet } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import Svg, { G, Line, Polygon, Text as SvgText } from 'react-native-svg';
-import { scaleLinear } from 'd3-scale';
+import { scaleLinear } from 'd3'; // eslint-disable-line import/no-unresolved
 import { Answer } from '../types';
 import { predictPersonality } from '../utils/tflite';
+import { ThemedView } from '@/components/ThemedView';
+import { ThemedText } from '@/components/ThemedText';
+import { DesignSystem } from '@/constants/DesignSystem';
 
 const traits = ['Openness', 'Conscientiousness', 'Extraversion', 'Agreeableness', 'Neuroticism'];
 
-export default function ResultsScreen() {
+function ResultsScreen() {
   const { answers: answersParam, user: userParam } = useLocalSearchParams();
   const router = useRouter();
   const answers: Answer[] = answersParam ? JSON.parse(answersParam as string) : [];
@@ -54,8 +57,10 @@ export default function ResultsScreen() {
   const polygonPoints = points.map((p) => p.join(',')).join(' ');
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Welcome, {user.nickname}!</Text>
+    <ThemedView style={styles.container}>
+      <ThemedText type="title" style={styles.title}>
+        Welcome, {user.nickname}!
+      </ThemedText>
       {profileData ? (
         <Svg width={size} height={size}>
           <G>
@@ -81,15 +86,34 @@ export default function ResultsScreen() {
           </G>
         </Svg>
       ) : (
-        <Text style={styles.loadingText}>No profile data available.</Text>
+        <ThemedText style={styles.loadingText}>No profile data available.</ThemedText>
       )}
-      <Button title="Restart" onPress={() => router.replace('/')} />
-    </View>
+      <Button
+        title="Restart"
+        onPress={() => router.replace('/')}
+        color={DesignSystem.colors.primary}
+      />
+    </ThemedView>
   );
 }
 
+export default ResultsScreen;
+
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: 'center', alignItems: 'center', padding: 16 },
-  title: { fontSize: 24, fontWeight: 'bold', marginBottom: 16 },
-  loadingText: { fontSize: 16, color: 'gray', marginBottom: 16 },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: DesignSystem.spacing[4],
+    backgroundColor: DesignSystem.colors.bg,
+  },
+  title: {
+    marginBottom: DesignSystem.spacing[4],
+  },
+  loadingText: {
+    fontFamily: 'Inter',
+    fontSize: DesignSystem.typography.fontSizeMd,
+    color: DesignSystem.colors.textMuted,
+    marginBottom: DesignSystem.spacing[4],
+  },
 });
