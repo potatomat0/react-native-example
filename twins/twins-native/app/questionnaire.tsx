@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ScrollView, Button, TextInput, StyleSheet, View } from 'react-native';
+import { ScrollView, Button, StyleSheet, View, TouchableOpacity } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { parseQuestionList, Question } from '@/utils/csvParser';
 import { ThemedText } from '@/components/ThemedText';
@@ -41,13 +41,22 @@ export default function QuestionnaireScreen() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {questions.map((q) => (
-        <View key={q.number} style={styles.question}>
-          <ThemedText>{q.text}</ThemedText>
-          <TextInput
-            style={styles.input}
-            placeholder="Enter your answer"
-            onChangeText={(text) => handleAnswer(Number(q.number), text)}
-          />
+        <View key={q.itemNumber} style={styles.question}>
+          <ThemedText>{q.question}</ThemedText>
+          <View style={styles.optionsContainer}>
+            {[1, 2, 3, 4, 5].map((value) => (
+              <TouchableOpacity
+                key={value}
+                style={[
+                  styles.option,
+                  answers[Number(q.itemNumber)] === String(value) && styles.selectedOption,
+                ]}
+                onPress={() => handleAnswer(Number(q.itemNumber), String(value))}
+              >
+                <ThemedText>{value}</ThemedText>
+              </TouchableOpacity>
+            ))}
+          </View>
         </View>
       ))}
       <Button
@@ -67,11 +76,20 @@ const styles = StyleSheet.create({
   question: {
     marginBottom: DesignSystem.spacing[4],
   },
-  input: {
+  optionsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: DesignSystem.spacing[2],
+  },
+  option: {
     borderWidth: 1,
     borderColor: DesignSystem.colors.border,
     borderRadius: DesignSystem.radius.sm,
     padding: DesignSystem.spacing[2],
-    marginTop: DesignSystem.spacing[2],
+    minWidth: 40,
+    alignItems: 'center',
+  },
+  selectedOption: {
+    backgroundColor: DesignSystem.colors.primary,
   },
 });

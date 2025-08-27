@@ -1,4 +1,4 @@
-Question_Number,Question_Text,Scale,Direction,Scale_Name
+Item_Number,Question,Scale,Direction,Factor_Name
 1,"Am the life of the party.",1,+,Extraversion
 2,"Feel little concern for others.",2,-,Agreeableness
 3,"Am always prepared.",3,+,Conscientiousness
