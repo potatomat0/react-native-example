@@ -16,6 +16,7 @@ export default function QuestionnaireScreen() {
   const backgroundColor = useThemeColor({}, 'background');
   const primaryColor = useThemeColor({}, 'primary');
   const borderColor = useThemeColor({}, 'border');
+  const textColor = useThemeColor({}, 'text');
 
   useEffect(() => {
     async function loadQuestions() {
@@ -37,34 +38,43 @@ export default function QuestionnaireScreen() {
     router.push({
       pathname: '/results',
       params: {
-        user: userParam as string,
-        answers: JSON.stringify(answersArray),
+        user: encodeURIComponent(userParam as string),
+        answers: encodeURIComponent(JSON.stringify(answersArray)),
       },
     });
   };
 
   return (
     <ScrollView contentContainerStyle={[styles.container, { backgroundColor }]}>
-      {questions.map((q) => (
-        <View key={q.itemNumber} style={styles.question}>
-          <ThemedText>{q.question}</ThemedText>
-          <View style={styles.optionsContainer}>
-            {[1, 2, 3, 4, 5].map((value) => (
-              <TouchableOpacity
-                key={value}
-                style={[
-                  styles.option,
-                  { borderColor },
-                  answers[Number(q.itemNumber)] === String(value) && [styles.selectedOption, { backgroundColor: primaryColor }],
-                ]}
-                onPress={() => handleAnswer(Number(q.itemNumber), String(value))}
-              >
-                <ThemedText>{value}</ThemedText>
-              </TouchableOpacity>
-            ))}
+      {questions.map((q) => {
+        const questionText = q.question.replace(/^"|"$/g, '');
+        const formattedQuestion = `I ${questionText.charAt(0).toLowerCase()}${questionText.slice(1)}`;
+        return (
+          <View key={q.itemNumber} style={styles.question}>
+            <ThemedText>{formattedQuestion}</ThemedText>
+            <View style={styles.optionsContainer}>
+              {[1, 2, 3, 4, 5].map((value) => {
+                const selected = answers[Number(q.itemNumber)] === String(value);
+                return (
+                  <TouchableOpacity
+                    key={value}
+                    style={[
+                      styles.option,
+                      { borderColor },
+                      selected && [styles.selectedOption, { backgroundColor: primaryColor }],
+                    ]}
+                    onPress={() => handleAnswer(Number(q.itemNumber), String(value))}
+                  >
+                    <ThemedText style={selected ? styles.selectedText : { color: textColor }}>
+                      {value}
+                    </ThemedText>
+                  </TouchableOpacity>
+                );
+              })}
+            </View>
           </View>
-        </View>
-      ))}
+        );
+      })}
       <Button
         title="Submit"
         onPress={handleSubmit}
@@ -94,4 +104,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   selectedOption: {},
+  selectedText: {
+    color: DesignSystem.colors.bg,
+  },
 });
