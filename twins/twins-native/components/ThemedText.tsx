@@ -37,32 +37,32 @@ export function ThemedText({
 
 const styles = StyleSheet.create({
   default: {
-    fontFamily: 'Inter',
+    fontFamily: DesignSystem.typography.fontFamilyBase,
     fontSize: DesignSystem.typography.fontSizeMd,
     lineHeight:
       DesignSystem.typography.fontSizeMd * DesignSystem.typography.lineHeightBase,
   },
   defaultSemiBold: {
-    fontFamily: 'Inter',
+    fontFamily: DesignSystem.typography.fontFamilyBase,
     fontWeight: '600',
     fontSize: DesignSystem.typography.fontSizeMd,
     lineHeight:
       DesignSystem.typography.fontSizeMd * DesignSystem.typography.lineHeightBase,
   },
   title: {
-    fontFamily: 'Inter',
+    fontFamily: DesignSystem.typography.fontFamilyBase,
     fontWeight: '700',
     fontSize: DesignSystem.typography.fontSizeXl,
     lineHeight:
       DesignSystem.typography.fontSizeXl * DesignSystem.typography.lineHeightBase,
   },
   subtitle: {
-    fontFamily: 'Inter',
+    fontFamily: DesignSystem.typography.fontFamilyBase,
     fontWeight: '700',
     fontSize: DesignSystem.typography.fontSizeLg,
   },
   link: {
-    fontFamily: 'Inter',
+    fontFamily: DesignSystem.typography.fontFamilyBase,
     lineHeight:
       DesignSystem.typography.fontSizeMd * DesignSystem.typography.lineHeightBase,
     fontSize: DesignSystem.typography.fontSizeMd,

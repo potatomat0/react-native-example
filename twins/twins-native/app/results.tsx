@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
     marginBottom: DesignSystem.spacing[4],
   },
   loadingText: {
-    fontFamily: 'Inter',
+    fontFamily: DesignSystem.typography.fontFamilyBase,
     fontSize: DesignSystem.typography.fontSizeMd,
     color: DesignSystem.colors.textMuted,
     marginBottom: DesignSystem.spacing[4],
