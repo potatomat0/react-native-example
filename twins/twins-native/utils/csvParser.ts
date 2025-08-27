@@ -2,11 +2,11 @@ import { Asset } from 'expo-asset';
 import * as FileSystem from 'expo-file-system';
 
 export interface Question {
-  number: string;
-  text: string;
+  itemNumber: string;
+  question: string;
   scale: string;
   direction: string;
-  scaleName: string;
+  factorName: string;
 }
 
 export async function parseQuestionList(): Promise<Question[]> {
@@ -18,7 +18,7 @@ export async function parseQuestionList(): Promise<Question[]> {
     .split('\n')
     .slice(1)
     .map((line) => {
-      const [number, text, scale, direction, scaleName] = line.split(',');
-      return { number, text, scale, direction, scaleName };
+      const [itemNumber, question, scale, direction, factorName] = line.split(',');
+      return { itemNumber, question, scale, direction, factorName };
     });
 }

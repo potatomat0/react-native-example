@@ -12,8 +12,8 @@ export enum Screen {
     gender: string;
   }
   
-  export type AnswerType = 'Like Scale' | 'YES/NO';
-  
+  export type AnswerType = 'Likert';
+
   export interface Question {
     category: string;
     question: string;
