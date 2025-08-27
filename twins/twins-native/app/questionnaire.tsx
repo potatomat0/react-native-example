@@ -5,12 +5,17 @@ import { parseQuestionList, Question } from '@/utils/csvParser';
 import { ThemedText } from '@/components/ThemedText';
 import { DesignSystem } from '@/constants/DesignSystem';
 import { Answer } from '../types';
+import { useThemeColor } from '@/hooks/useThemeColor';
 
 export default function QuestionnaireScreen() {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const router = useRouter();
   const { user: userParam } = useLocalSearchParams();
+
+  const backgroundColor = useThemeColor({}, 'background');
+  const primaryColor = useThemeColor({}, 'primary');
+  const borderColor = useThemeColor({}, 'border');
 
   useEffect(() => {
     async function loadQuestions() {
@@ -39,7 +44,7 @@ export default function QuestionnaireScreen() {
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <ScrollView contentContainerStyle={[styles.container, { backgroundColor }]}>
       {questions.map((q) => (
         <View key={q.itemNumber} style={styles.question}>
           <ThemedText>{q.question}</ThemedText>
@@ -49,7 +54,8 @@ export default function QuestionnaireScreen() {
                 key={value}
                 style={[
                   styles.option,
-                  answers[Number(q.itemNumber)] === String(value) && styles.selectedOption,
+                  { borderColor },
+                  answers[Number(q.itemNumber)] === String(value) && [styles.selectedOption, { backgroundColor: primaryColor }],
                 ]}
                 onPress={() => handleAnswer(Number(q.itemNumber), String(value))}
               >
@@ -62,7 +68,7 @@ export default function QuestionnaireScreen() {
       <Button
         title="Submit"
         onPress={handleSubmit}
-        color={DesignSystem.colors.primary}
+        color={primaryColor}
       />
     </ScrollView>
   );
@@ -71,7 +77,6 @@ export default function QuestionnaireScreen() {
 const styles = StyleSheet.create({
   container: {
     padding: DesignSystem.spacing[4],
-    backgroundColor: DesignSystem.colors.bg,
   },
   question: {
     marginBottom: DesignSystem.spacing[4],
@@ -83,13 +88,10 @@ const styles = StyleSheet.create({
   },
   option: {
     borderWidth: 1,
-    borderColor: DesignSystem.colors.border,
     borderRadius: DesignSystem.radius.sm,
     padding: DesignSystem.spacing[2],
     minWidth: 40,
     alignItems: 'center',
   },
-  selectedOption: {
-    backgroundColor: DesignSystem.colors.primary,
-  },
+  selectedOption: {},
 });
