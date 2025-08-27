@@ -14,8 +14,12 @@ const traits = ['Openness', 'Conscientiousness', 'Extraversion', 'Agreeableness'
 function ResultsScreen() {
   const { answers: answersParam, user: userParam } = useLocalSearchParams();
   const router = useRouter();
-  const answers: Answer[] = answersParam ? JSON.parse(answersParam as string) : [];
-  const user = userParam ? JSON.parse(userParam as string) : { nickname: '' };
+  const answers: Answer[] = answersParam
+    ? JSON.parse(decodeURIComponent(answersParam as string))
+    : [];
+  const user = userParam
+    ? JSON.parse(decodeURIComponent(userParam as string))
+    : { nickname: '' };
   const [profileData, setProfileData] = useState<number[] | null>(null);
 
   useEffect(() => {
