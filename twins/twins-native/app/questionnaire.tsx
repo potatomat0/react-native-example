@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Button, TextInput } from 'react-native';
+import { ScrollView, Button, TextInput, StyleSheet, View } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { parseQuestionList, Question } from '@/utils/csvParser';
+import { ThemedText } from '@/components/ThemedText';
+import { DesignSystem } from '@/constants/DesignSystem';
 import { Answer } from '../types';
 
 export default function QuestionnaireScreen() {
@@ -37,17 +39,39 @@ export default function QuestionnaireScreen() {
   };
 
   return (
-    <View>
+    <ScrollView contentContainerStyle={styles.container}>
       {questions.map((q) => (
-        <View key={q.number}>
-          <Text>{q.text}</Text>
+        <View key={q.number} style={styles.question}>
+          <ThemedText>{q.text}</ThemedText>
           <TextInput
+            style={styles.input}
             placeholder="Enter your answer"
             onChangeText={(text) => handleAnswer(Number(q.number), text)}
           />
         </View>
       ))}
-      <Button title="Submit" onPress={handleSubmit} />
-    </View>
+      <Button
+        title="Submit"
+        onPress={handleSubmit}
+        color={DesignSystem.colors.primary}
+      />
+    </ScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    padding: DesignSystem.spacing[4],
+    backgroundColor: DesignSystem.colors.bg,
+  },
+  question: {
+    marginBottom: DesignSystem.spacing[4],
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: DesignSystem.colors.border,
+    borderRadius: DesignSystem.radius.sm,
+    padding: DesignSystem.spacing[2],
+    marginTop: DesignSystem.spacing[2],
+  },
+});

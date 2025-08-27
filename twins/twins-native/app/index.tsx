@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { TextInput, Button, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
+import { ThemedView } from '@/components/ThemedView';
+import { ThemedText } from '@/components/ThemedText';
+import { DesignSystem } from '@/constants/DesignSystem';
 import { User } from '../types';
 
 const RegistrationScreen: React.FC = () => {
@@ -18,8 +21,10 @@ const RegistrationScreen: React.FC = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Register</Text>
+    <ThemedView style={styles.container}>
+      <ThemedText type="title" style={styles.title}>
+        Register
+      </ThemedText>
       <TextInput
         style={styles.input}
         placeholder="Nickname"
@@ -45,15 +50,34 @@ const RegistrationScreen: React.FC = () => {
         value={gender}
         onChangeText={setGender}
       />
-      <Button title="Register" onPress={handleRegister} />
-    </View>
+      <Button
+        title="Register"
+        onPress={handleRegister}
+        color={DesignSystem.colors.primary}
+      />
+    </ThemedView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: 'center', alignItems: 'center', padding: 16 },
-  title: { fontSize: 24, fontWeight: 'bold', marginBottom: 16 },
-  input: { width: '100%', padding: 8, borderWidth: 1, borderColor: '#ccc', marginBottom: 16 },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: DesignSystem.spacing[4],
+    backgroundColor: DesignSystem.colors.bg,
+  },
+  title: {
+    marginBottom: DesignSystem.spacing[4],
+  },
+  input: {
+    width: '100%',
+    padding: DesignSystem.spacing[2],
+    borderWidth: 1,
+    borderColor: DesignSystem.colors.border,
+    marginBottom: DesignSystem.spacing[4],
+    borderRadius: DesignSystem.radius.sm,
+  },
 });
 
 export default RegistrationScreen;
